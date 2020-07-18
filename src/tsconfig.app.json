@@ -3,7 +3,11 @@
   "compilerOptions": {
     "outDir": "../out-tsc/app",
     "module": "es2015",
-    "baseUrl": "",
+    "baseUrl": "./",
+    "paths": {
+      "pdfjs-dist/build/*": ["/Users/home/Programming/pdf.js/build/generic/build/*"],
+      "pdfjs-dist/tsc-out/*": ["/Users/home/Programming/pdf.js/build/tsc-out/*"]
+    },
     "types": []
   },
   "include": [
