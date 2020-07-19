@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {getDocument} from "pdfjs-dist/tsc-out/display/api";
 import {GlobalWorkerOptions} from "pdfjs-dist/tsc-out/display/worker_options";
 
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker";
+import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
 console.log("pdfjsworker:", pdfjsWorker);
 GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const doc = getDocument({data: HomeComponent.pdfData}) as any;
-    const pdf = doc.promise;
+    const pdf = await doc.promise;
     const page = await pdf.getPage(1);
     console.log(page);
     const pageContent = await page.getTextContent();
